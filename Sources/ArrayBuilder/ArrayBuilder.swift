@@ -1,3 +1,9 @@
+//
+//  ArrayBuilder.swift
+//
+//
+//  Created by Tielmann, Andreas on 24.07.2020.
+//
 
 /** a generic array builder
     ```swift
@@ -62,8 +68,8 @@
     }
 
     /// creates a partial result from a single expression.
-    public static func buildExpression(_ expression: [[T]]) -> [T] {
-        expression.flatMap { $0 }
+    public static func buildExpression<S1: Sequence, S2: Sequence>(_ expression: S1) -> [T] where S1.Element == S2, S2.Element == T {
+        Array(expression.flatMap { $0 })
     }
 
     /// creates a partial result from a single expression.

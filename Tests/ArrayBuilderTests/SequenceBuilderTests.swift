@@ -1,10 +1,17 @@
+//
+//  SequenceBuilderTests.swift
+//  
+//
+//  Created by Tielmann, Andreas on 24.07.2020.
+//
+
 @testable import ArrayBuilder
 import XCTest
 
-final class ArrayBuilderTests: XCTestCase {
+final class SequenceBuilderTests: XCTestCase {
 
-    func test(@ArrayBuilder<String> builder: () -> [String]) -> [String] {
-        builder()
+    func test(@SequenceBuilder<String> builder: () -> AnySequence<String>) -> [String] {
+        Array(builder())
     }
 
     func createMaybeString() -> String? {
@@ -63,8 +70,8 @@ final class ArrayBuilderTests: XCTestCase {
     }
 
     func testComment() {
-        func list(@ArrayBuilder<String> builder: () -> [String]) -> [String] {
-            builder()
+        func list(@SequenceBuilder<String> builder: () -> AnySequence<String>) -> [String] {
+            Array(builder())
         }
 
         let result = list {
