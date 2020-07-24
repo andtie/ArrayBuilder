@@ -1,5 +1,22 @@
-//import Foundation
 
+/** a generic array builder
+    ```swift
+    func list(@ArrayBuilder<String> builder: () -> [String]) -> [String] {
+        builder()
+    }
+
+    list {
+        "some string"
+        if sqrt(16) > 2 {
+            "foo"
+        } else {
+            "bar"
+        }
+    }
+
+    // returns ["some string", "foo"]
+    ```
+ */
 @_functionBuilder public enum ArrayBuilder<T> {
 
     /// combines multiple partial results into one.

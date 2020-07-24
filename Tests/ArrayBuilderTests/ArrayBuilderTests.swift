@@ -62,6 +62,23 @@ final class ArrayBuilderTests: XCTestCase {
         XCTAssertEqual(result, expected)
     }
 
+    func testComment() {
+        func list(@ArrayBuilder<String> builder: () -> [String]) -> [String] {
+            builder()
+        }
+
+        let result = list {
+            "some string"
+            if sqrt(16) > 2 {
+                "foo"
+            } else {
+                "bar"
+            }
+        }
+
+        XCTAssertEqual(result, ["some string", "foo"])
+    }
+
     static var allTests = [
         ("testExample", testExample)
     ]
